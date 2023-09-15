@@ -1,0 +1,51 @@
+body {
+    padding: 0px;
+    margin: 0px;
+    font-family: monospace;
+}
+#banner {
+    padding: 10px;
+    width: 780px;
+    height: 80px;
+    background-color: royalblue;
+    color: white;
+    clear: both;
+    position: fixed;
+}
+#nav {
+    width: 150px;
+    height: 400px;
+    background-color: aliceblue;
+    color: darkblue;
+    float: left;
+}
+#information {
+    padding: 10px;
+    width: 130px;
+    height: 380px;
+    background-color: aliceblue;
+    float: left;
+}
+#content {
+    padding: 10px;
+    width: 480px;
+    height: 380px;
+    background-color: snow;
+    float: left;
+}
+#footer {
+    padding: 10px;
+    width: 780px;
+    height: 80px;
+    background-color: cornflowerblue;
+    color: white;
+    float: left;
+    clear: both;
+}
+#nav, #content, #information {
+    margin-top: 100px;
+}
+#wrapper {
+    width: 800px;
+    margin: 0 auto;
+}
