@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homework02</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* Custom Styles */
+        .half-width {
+            width: 50%;
+            margin: 0 auto;
+        }
+        .section-content-bg {
+            background-color: #f2f2f2;
+            border-radius: 10px;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 200px;
+            margin: 20px 0;
+        }
+        .section-content {
+            background-color: transparent;
+            text-align: left;
+            padding: 0;
+        }
+        .section-content p {
+            font-size: 14px;
+        }
+        /* Sticky Navigation Styles */
+        .sticky-nav {
+            position: -webkit-sticky;
+            position: sticky;
+            top: 0;
+            background-color: #333;
+            z-index: 1000;
+        }
+        /* Custom Navigator Styles */
+        .custom-nav {
+            background-color: #333;
+        }
+        .custom-nav .btn {
+            color: white;
+            margin-right: 10px;
+        }
+        /* Banner Styles */
+        #banner {
+            background-color: #000080; /* 深蓝色 */
+            color: white;
+        }
+        /* Section Banner Styles */
+        #section1,
+        #section2,
+        #section3 {
+            background-color: #FFA500; /* 橘色 */
+        }
+    </style>
+</head>
+<body style="height: 100%;">
+    <!-- Banner -->
+    <div id="banner" class="jumbotron text-center">
+        <h1>Homework02 Banner</h1>
+    </div>
+
+    <!-- Navigator -->
+    <div id="nav-container" class="custom-nav sticky-nav">
+        <button class="btn btn-link" onclick="scrollToSection('banner')">Home</button>
+        <button class="btn btn-link" onclick="scrollToSection('section1')">Section 1</button>
+        <button class="btn btn-link" onclick="scrollToSection('section2')">Section 2</button>
+        <button class="btn btn-link" onclick="scrollToSection('section3')">Section 3</button>
+    </div>
+
+    <!-- Section 1 Banner -->
+    <div id="section1" class="jumbotron text-center">
+        <h1>Section 1 Banner</h1>
+    </div>
+
+    <!-- Section 1 Content -->
+    <div class="container-fluid">
+        <div class="container">
+            <div class="section-content-bg">
+                <div id="section1-content" class="section-content half-width">
+                    <h2>Section 1 Content</h2>
+                    <p>
+                        This is the text content for Section 1.<br>
+                        You can add more text as needed.<br>
+                        Text is left-aligned and smaller than Section 1 Content title.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Section 2 Banner -->
+    <div id="section2" class="jumbotron text-center">
+        <h1>Section 2 Banner</h1>
+    </div>
+
+    <!-- Section 2 Content -->
+    <div class="container-fluid">
+        <div class="container">
+            <div class="section-content-bg">
+                <div id="section2-content" class="section-content half-width">
+                    <h2>Section 2 Content</h2>
+                    <p>
+                        This is the text content for Section 2.<br>
+                        You can add more text as needed.<br>
+                        Text is left-aligned and smaller than Section 2 Content title.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Section 3 Banner -->
+    <div id="section3" class="jumbotron text-center">
+        <h1>Section 3 Banner</h1>
+    </div>
+
+    <!-- Section 3 Content -->
+    <div class="container-fluid">
+        <div class="container">
+            <div class="section-content-bg">
+                <div id="section3-content" class="section-content half-width">
+                    <h2>Section 3 Content</h2>
+                    <p>
+                        This is the text content for Section 3.<br>
+                        You can add more text as needed.<br>
+                        Text is left-aligned and smaller than Section 3 Content title.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function scrollToSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            section.scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
