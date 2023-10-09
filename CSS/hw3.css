@@ -124,7 +124,7 @@ footer {
 }
 #video-container {
     width: auto;
-    height: 45vh;
+    height: auto;
     overflow: hidden;
     border-radius: 50%;
 }
