@@ -123,8 +123,8 @@ footer {
     text-align: center;
 }
 #video-container {
-    width: 45vw;
-    height: 45vh;
+    width: 30%;
+    height: 30%;
     overflow: hidden;
     border-radius: 50%;
 }
