@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC&display=swap" rel="stylesheet">
+
+    <title>崁仔頂魚市場</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: auto;
+        }
+        .container-fluid {
+            position: relative;
+        }
+        .section {
+            height: 200vh;
+            display: flex;
+            align-items: center;
+            justify-content: left;
+            text-align: left;
+            padding: 10%;
+        }
+        .container-fluid video {
+            position: relative;
+            width: 100%;
+            height: 200vh;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="section" style="background:black;">
+            <h2 style="color: white;font-family:'Noto Serif TC';">崁仔頂魚市場<br><br>　　崁仔頂的存在是雙面的。白日的崁仔頂總瀰漫著過度寂靜的氛圍，宛如嘉年華過後的散場。缺少了白天該有的活力，有種錯身在異境的不切實際。<br>　　但隨著夜色漸沉，崁仔頂的氣氛開始活絡了起來──拉起鐵門，漁行擺出一盤一盤的海鮮；載著魚貨的卡車轟隆隆地駛進駛出，層層堆疊的保麗龍箱快速地被推下。夜越深，整個魚市場的輪廓就越鮮明，彷彿是夜晚替它上了色。<br><br><br><br>文字：鍾宜庭；節錄自《海想知道》第3期：〈深入崁仔頂──在地壽司師傅怎麼逛魚市〉</h2>
+        </div>
+        <div class="container-fluid" id="video-container1">
+            <video id="video1" src="Video/hw5_1.mp4" preload="auto"></video>
+        </div>
+        <div class="section" style="background: black;">
+            <h2 style="color: white;font-family:'Noto Serif TC';">拍賣會的靈魂人物─糶手<br><br>　　當糶手開始喊出：「100、110……」等，快到讓人聽不清楚價格的同時，還會搭配不同的手勢與動作，宛如在表演一般，且拿手絕活各有不同。糶手喊價時，若現場沒反應，會開始降價；買家一有動作，表示有購買意願，糶手就會彈性往上加價，越多人有興趣、加價空間越高。<br><br><br><br>文字：黃文茹；節錄自：自由時報〈最強快嘴「糶手」 拍賣魚貨靠他們〉</h2>
+            <p></p>
+        </div>
+        <div class="container-fluid" id="video-container2">
+            <video id="video2" src="Video/hw5_2.mp4" preload="auto" muted></video>
+        </div>
+        <div class="section" style="background: black;">
+            <h2 style="color: white;font-family:'Noto Serif TC';">營業時間：半夜－凌晨6點<br>市場地點：基隆市仁愛區親民大樓周邊</h2>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(function() {
+            const videos = [$('#video1').get(0), $('#video2').get(0)];
+
+            if (!videos.every(video => video)) {
+                console.error("Video element not found");
+                return;
+            }
+
+            const maxScroll = $(document).height() - $(window).height();
+
+            $(window).on('scroll', function() {
+                const currentScrollPosition = $(this).scrollTop();
+
+                videos.forEach((video, index) => {
+                    const videoContainer = $(`#video-container${index + 1}`);
+                    const videoTop = videoContainer.offset().top;
+                    const videoHeight = videoContainer.height();
+
+                    if (currentScrollPosition >= videoTop && currentScrollPosition < (videoTop + videoHeight)) {
+                        if (video.duration) {
+                            const scrollPercentage = (currentScrollPosition - videoTop) / videoHeight;
+                            video.currentTime = video.duration * scrollPercentage;
+                            video.play();
+                        } else {
+                            console.warn(`Video ${index + 1} duration is not available`);
+                        }
+                    } else {
+                        video.pause();
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
