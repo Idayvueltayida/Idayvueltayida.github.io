@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>雨都的集體記憶：湮滅的旭川河與三連棟的未來想像</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: auto;
+        }
+
+        .highlight {
+            background-color: #F5FF8E;
+            background-size: 200%;
+        }
+
+        #section1-banner {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding-top: 2vh;
+            padding-bottom: 2vh;
+            background-color: #F5FF8E;
+        }
+
+        #MapsTop,
+        #MapsBottom {
+            height: 3vh;
+            background-color: #314857;
+        }
+
+        #Maps,
+        #MapsText {
+            padding-left: 11vw;
+            padding-right: 11vw;
+            background-color: #314857;
+        }
+
+        #Map1888,
+        #Map1935,
+        #MapNow {
+            padding-left: 0.5vw;
+            padding-right: 0.5vw;
+        }
+
+        #Map1888Text,
+        #Map1935Text,
+        #MapNowText {
+            font-family: 'Noto Serif TC';
+            font-size: 2.4vmin;
+            color: white;
+            padding-left: 2vw;
+            padding-right: 2vw;
+            padding-bottom: 3vh;
+        }
+
+        #OldPhoto1-4,
+        #OldPhoto1-5,
+        #OldPhoto1-7,
+        #Photo1-8,
+        #Photo2-1-0,
+        #Photo2-2-0 {
+            position: relative;
+            width: 100vw;
+            overflow: hidden;
+            padding: 0;
+        }
+
+        .img1-4,
+        .img1-5,
+        .img1-7,
+        .img1-8 {
+            position: relative;
+            width: 100vw;
+            object-fit: cover;
+            opacity: 1;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        #NowPhoto {
+            position: relative;
+            width: 100vw;
+            overflow: hidden;
+            padding: 0;
+        }
+
+        .img1-6-0,
+        .img1-6-1,
+        .img1-6-2,
+        .img1-6-3,
+        .img1-6-4 {
+            position: relative;
+            width: 100vw;
+            object-fit: cover;
+        }
+
+        #FishMarketText,
+        #BuildingsText,
+        #ShopText,
+        #ShopinBuildingsText {
+            font-family: 'Noto Serif TC';
+            text-align: left;
+            color: white;
+            position: absolute;
+            top: 50vh;
+            left: 50vw;
+            z-index: 100;
+            background-color: rgba(0, 0, 0, 0.55);
+            opacity: 0;
+            transform: translate(-50%, -50%);
+            transition: opacity 0.5s ease-in-out;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        #ShopinBuildingsEndText {
+            font-family: 'Noto Serif TC';
+            text-align: left;
+            color: white;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            z-index: 100;
+            background-color: #314857;
+            opacity: 1;
+            transform: translate(-50%, -50%);
+            transition: opacity 0.5s ease-in-out;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        #KLText {
+            font-family: 'Noto Serif TC';
+            text-align: left;
+            color: white;
+            position: absolute;
+            top: 10vh;
+            bottom: 10vh;
+            left: 5vw;
+            right: 5vw;
+            z-index: 100;
+            background-color: #314857;
+            overflow: hidden;
+        }
+
+        .rounded-corner {
+            border-radius: 2vw;
+            padding-left: 2vw;
+            padding-right: 2vw;
+            padding-top: 3vh;
+            padding-bottom: 5vh;
+        }
+
+        /* 初始狀態下，下面的 sticky-top 是隱藏的 */
+        #KLTalk {
+            position: relative;
+            top: 100vh;
+        }
+
+        /* 當加上 show 這個 CSS 類時，顯示下面的 sticky-top */
+        #KLTalk.show {
+            top: 0vh;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="Banner" style="height: 100vh;font-family:'Noto Serif TC';"></div>
+    <div id="section1-banner">
+        <span style="font-size:200%;font-family:'Noto Serif TC'">時空尋訪：旭川河與三連棟</span>
+    </div>
+    <div class="sticky-top" style="height:100vh;background-color: #314857;">
+        <div class="container-fluid" id="MapsTop"></div>
+        <div class="container-fluid" id="Maps">
+            <div class="row">
+                <div id="Map1888" class="col-4">
+                    <div class="image-container">
+                        <img src="Picture/1-1_1888Map.png" alt="清代地圖" style="max-width: 100%;">
+                    </div>
+                </div>
+                <div id="Map1935" class="col-4">
+                    <div class="image-container" id="adjustment">
+                        <img src="Picture/1-2_1935Map.png" alt="日治地圖" style="max-width: 100%;">
+                    </div>
+                </div>
+                <div id="MapNow" class="col-4">
+                    <div class="image-container">
+                        <img src="Picture/1-3_NowMap.png" alt="現今地圖" style="max-width: 100%;">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid" id="MapsBottom"></div>
+        <div class="container-fluid" id="MapsText">
+            <div class="row">
+                <div id="Map1888Text" class="col-4">
+                    <span>清代，可泊船的河道稱「港」<br><br>牛稠港、蚵殼港、石硬港、田寮港分別匯入港灣，俗稱四港門</span>
+                </div>
+                <div id="Map1935Text" class="col-4">
+                    <span>日治，為加強日臺聯繫展開築港工程<br><br>整治市區河川時，將</span>
+                    <span class="highlight" style="color:#424242;">蚵殼港下游與石硬港合流為運河，名旭川</span>
+                </div>
+                <div id="MapNowText" class="col-4">
+                    <span>光復後，基隆市地飽和，遂與河爭地。<br><br>市政府加蓋旭川河面、</span>
+                    <span class="highlight" style="color:#424242;">興建明德、親民、至善大樓（即三連棟）</span>
+                    <span>，將岸邊住戶遷入</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="sticky-top" style="height:210vh;background-color: black;">
+        <div class="container-fluid" id="OldPhoto1-4" style="background-color: black;">
+            <img class="img1-4" src="Picture/1-4.jpg" alt="旭川河老照片" style="width: 100%;">
+            <div class="rounded-corner" id="FishMarketText">
+                <span class="highlight" style="font-size:3.5vmin;color:#424242;">來去「崁仔頂」</span>
+                <span
+                    style="font-size:2.25vmin;"><br><br>　　深澳、野柳、金山一帶的漁人豐收後，先回到岸邊魚寮，鹽漬、乾製或煮熟漁貨以便保存，接著重新出航，直至累積足夠的漁貨，才準備販售。途中與其他漁船相遇時，彼此問候：<br><br></span>
+                <span class="highlight" style="font-size:2.25vmin;color:#424242;">「你欲去佗？」<br>「我欲去崁仔頂。」</span>
+                <span
+                    style="font-size:2.25vmin;"><br><br>　　而後，漁船一路航向基隆，緩緩駛進石硬港（今南榮河）下游的街肆。討海日常從清領延續到日治時期，而港口和市街的風貌已大不相同：為改善大雨後市區積水不退，也為提供漁船暫避風浪、疏運貨物的場所，隨著基隆港築港工程有條不紊地推行，流經市區的石硬港下游與改道的蚵殻港（今西定河）整併為「旭川運河」。<br><br>　　整治後，方正的駁坎構成岸壁，漁船停泊在側，</span>
+                <span class="highlight"
+                    style="font-size:2.25vmin;color:#424242;">漁人從低低的河床拾階而上，「崁仔」是送貨必經的石階，「崁仔頂」是指石階上，等待漁人到來的漁行。</span>
+                <span
+                    style="font-size:2.25vmin;">漁行前的街道與臨海的旭橋（今明德橋，僅存橋柱）熙來攘往，最初販售加工漁製品和雜貨的寥寥商家，夾雜在櫛比鱗次的店舖間，北臺灣最蓬勃熱鬧的漁獲集散地「崁仔頂魚市」就此誕生。<br><br>　　時至今日，魚市的興盛一如既往，不過營業時間、漁貨來源和運輸工具隨著基隆市的發展和冷凍技術的使用而截然不同。</span>
+            </div>
+        </div>
+    </div>
+    <div class="sticky-top" style="height:210vh;background-color: black;">
+        <div class="container-fluid" id="OldPhoto1-5" style="background-color: black;">
+            <img class="img1-5" src="Picture/1-5.jpg" alt="三連棟老照片">
+            <div class="rounded-corner" id="BuildingsText">
+                <span class="highlight" style="font-size:3.5vmin;color:#424242;">入厝「三連棟」</span>
+                <span class="highlight"
+                    style="font-size:2.25vmin;color:#424242;"><br><br>「如果讓你來治理一個市地飽和的城市，你會怎麼做？」</span>
+                <span style="font-size:2.25vmin;"><br><br>　　光復後，腹地狹小的基隆市地飽和。山區開發不易、填海影響港口功能，市政府苦思良久，最終決定</span>
+                <span class="highlight" style="font-size:2.25vmin;color:#424242;">「與河爭地」</span>
+                <span
+                    style="font-size:2.25vmin;">：先禁止漁船駛入淤積的旭川河，再進行整治加蓋，新生地上興建四層的住商混合大樓，依臨海距離命名為「明德、親民、至善大樓」，兩兩間以空橋連接，因此也被稱為「三連棟」。</span>
+                <span
+                    style="font-size:2.25vmin;"><br><br>　　落成後，河畔居民搬進與漁行一路之隔的大樓，白天做做生意，待夜幕降臨則默契地打烊，因為裝載冷凍漁貨的貨車已經上路，不一會兒就能抵達孝一路的親民大樓，將不計其數的保麗龍箱卸下，經由帶有滾輪的長梯整齊地堆放在漁行。隨著魚腥味瀰散、鹵素燈亮起，新竹、宜蘭以北的餐廳廚師開始挑挑揀揀，糶手（估價、拍賣漁貨的靈魂人物）的喊價聲此起彼落。直到臨近日出，批發的客人心滿意足地離去，散客陸續前來尋找鮮美的食材，崁仔頂魚市一夜的買賣才算漸入尾聲。<br><br>　　如今的「崁仔頂」活力依舊，只是</span>
+                <sapn class="highlight" style="font-size:2.25vmin;color:#424242;">
+                    隨著「三連棟」出現，搖櫓停泊、拾階而上的景色不再，旭川河成為隱匿在大樓、鬧市下的河流。</span>
+            </div>
+        </div>
+    </div>
+    <div id="NowPhoto" class="sticky-top" style="height:685vh;background-color: black;">
+        <div class="container-fluid" id="Photo1-6-0" style="background-color: black;">
+            <img class="img1-6-0" src="Picture/1-6-0.PNG" alt="">
+        </div>
+        <div class="container-fluid" id="Photo1-6-1" style="background-color: black;">
+            <img class="img1-6-1" src="Picture/1-6-1.PNG" alt="">
+        </div>
+        <div class="container-fluid" id="Photo1-6-2" style="background-color: black;">
+            <img class="img1-6-2" src="Picture/1-6-2.PNG" alt="">
+        </div>
+        <div class="container-fluid" id="Photo1-6-3" style="background-color: black;">
+            <img class="img1-6-3" src="Picture/1-6-3.PNG" alt="">
+        </div>
+        <div class="container-fluid" id="Photo1-6-4" style="background-color: black;">
+            <img class="img1-6-4" src="Picture/1-6-4.PNG" alt="">
+        </div>
+    </div>
+    <div class="sticky-top" style="height:210vh;background-color: black;">
+        <div class="container-fluid" id="OldPhoto1-7" style="background-color: black;">
+            <img class="img1-7" src="Picture/1-7.jpg" alt="委託行老照片">
+            <div class="rounded-corner" id="ShopText">
+                <span class="highlight" style="font-size:3.5vmin;color:#424242;">「委託行」踅街</span>
+                <span style="font-size:2.25vmin;"><br><br>　　臨海不僅為基隆帶來豐盛的漁貨，在戰後戒嚴的時代，由於人們不能隨意出國、進出口也有嚴格的管制，</span>
+                <span class="highlight" style="font-size:2.25vmin;color:#424242;">船隻往返便利、近水樓台的基隆一躍成為北臺灣舶來品的集散中心。</span>
+                <span
+                    style="font-size:2.25vmin;"><br><br>或許你會心存疑慮：「管制下，舶來品從何而來？」<br><br>　　第一批商品來自即將遣返的日本人，多半是未能帶走的家具和日用品，希望在遣返前能換取現金；接著是船員私下將二手物品或新品送到港邊地攤販賣的時期，在地人開設的簡陋地攤並不合法，雖有取締，卻無法阻止這類檯面下的交易；越戰及第七艦隊協防臺灣期間，駐紮在基隆港的美軍和水手帶來大量舶來品，以換取休假時到酒吧放鬆的現金，由此時起，買賣舶來品的店家如雨後春筍般開設，一直延續到政府開放工商界人士出國考察、跑單幫（當時的專業代購）形成為止，是「委託行」街區最輝煌的時期。<br><br>　　</span>
+                <span class="highlight"
+                    style="font-size:2.25vmin;color:#424242;">在「委託」寄賣和帶回所需商品的往來之間，「委託行」乾淨明亮的櫥窗是國人接觸新潮事物與異國文化的窗口</span>
+                <span style="font-size:2.25vmin;">，及至1979年開放出國、百貨及購物中心出現前，200家委託行為基隆帶來源源不絕的人潮和錢潮。</span>
+
+            </div>
+        </div>
+    </div>
+    <div class="sticky-top" style="height:210vh;background-color: black;">
+        <div class="container-fluid" id="Photo1-8" style="background-color: black;">
+            <img class="img1-8" src="Picture/1-8.JPG" alt="三連棟店鋪照片">
+            <div class="rounded-corner" id="ShopinBuildingsText">
+                <span class="highlight" style="font-size:3.5vmin;color:#424242;">「三連棟」ㄟ店</span>
+                <span
+                    style="font-size:2.25vmin;"><br><br>　　緊鄰委託行街區、拔地而起的住商大樓曾經轟動一時：一、二樓的商店街因為船員、碼頭工人和委託行顧客的到來顯得生氣蓬勃；三、四樓的住宅、工會和報關行則是因為居民和職人的出入而充滿生活氣息。</span>
+                <span style="font-size:2.25vmin;"><br><br>2023年初記錄的三連棟商舖平面圖，顯示明德、親民、至善大樓雖然緊密相連，但聚集的產業卻不盡相同：</span>
+                <span class="highlight" style="font-size:2.25vmin;color:#424242;">明德大樓是流行場域</span>
+                <span
+                    style="font-size:2.25vmin;">，一樓的咖啡、餐飲、手搖飲料和服飾比鄰而居，二樓的咖啡、餐飲與美容美髮分庭抗禮，大樓一隅還有美術用品店、手藝材料行和模型店，三樓的物流公司、報關行與文史協進會則是隱約透露這裡從前的故事；</span>
+                <span class="highlight" style="font-size:2.25vmin;color:#424242;">親民大樓是生活場所</span>
+                <span
+                    style="font-size:2.25vmin;">，一樓的漁行白天以緊閉的鐵門示人，使得彩券行、診所、雨具行及百貨脫穎而出，二樓毫無疑問是女裝訂製、服飾修改的天下，阿姨的身影或穿梭於布料間，或專注而熟稔地使用布剪和縫紉機，車縫之餘，也會閒話家常幾句；</span>
+                <span class="highlight" style="font-size:2.25vmin;color:#424242;">至善大樓一樓囊括各式各樣的民生需求</span>
+                <span style="font-size:2.25vmin;">——咖啡、餐飲、製麵、水產、衡器、香舖、中藥、雨具，</span>
+                <span class="highlight" style="font-size:2.25vmin;color:#424242;">二樓則是放鬆的交際場合</span>
+                <span
+                    style="font-size:2.25vmin;">，幾家卡拉OK、酒坊的霓虹閃爍、親切道地的臺語和熱情的歌聲，很輕易地讓來自各方、萍水相逢的陌生人熱絡起來。</span>
+            </div>
+        </div>
+    </div>
+    <div class="sticky-top" style="height:100vh;background-color: white;">
+        <h1>店鋪平面圖橫向捲軸</h1>
+    </div>
+    <div class="sticky-top" style="height:10vh;background-color: white;"></div>
+    <div class="sticky-top" style="height:21vh;background-color: #314857;">
+        <div class="rounded-corner" id="ShopinBuildingsEndText">
+            <span
+                style="font-size:2.25vmin;">　　迄今，戰爭的氛圍遠去、從事海上與港邊工作的人數銳減，多數委託行和三連棟的店家默默拉下鐵門，偶有新的商店進駐，街區不至於徹底黯淡下來，卻再不復過去的璀璨。</span>
+        </div>
+    </div>
+    <div id="section1-banner" class="sticky-top" style="background-color: #F5FF8E;">
+        <span style="font-size:200%;font-family:'Noto Serif TC'">開蓋旭川河、拆除三連棟的「想望」</span>
+    </div>
+
+    <div class="sticky-top" style="height:150vh;">
+        <div class="container-fluid" id="Photo2-1-0">
+            <img class="img2-1-0" src="Picture/2-1-0.jpg" alt="貨櫃港照片">
+            <svg id="KLP2-1-0" class="rounded-rectangle" width="40vw" height="41vh" data-speed="2" data-pos="10"
+                style="position: absolute; left: 0vw; top: 10vh; z-index: 140;">
+                <defs>
+                    <pattern id="img2-1-1" width="100%" height="100%">
+                        <image href="Picture/2-1-1.png" width="100%" height="100%" />
+                    </pattern>
+                </defs>
+                <rect x="0" y="0" width="40vw" height="41vh" rx="25" ry="25" fill="url(#img2-1-1)"></rect>
+            </svg>
+            <svg id="KLP2-1-1" class="rounded-rectangle" width="80vw" height="50vh" data-speed="2" data-pos="10"
+                style="position: absolute; left: 5vw; top: 57.5vh; z-index: 140;">
+                <rect width="100%" height="100%" fill="none" />
+                <text x="0" y="0" font-family="Noto Serif TC" font-size="2.25vmin" fill="#ffffff" width="100%">
+                    <tspan x="0" dy="2em">
+                        1912年，隨著築港工程進行，碼頭取代泥灘曲岸，現代化的基隆港初見雛型。
+                    </tspan>
+                    <tspan x="0" dy="2em">
+                        1984年，基隆港成為世界第7大貨櫃港。
+                    </tspan>
+                    <tspan x="0" dy="5em">
+                        然而，受限於天然水深、地形、內陸運輸系統及碼頭後線不足，基隆港恐難應付日漸增長的運量需求，因此另闢臺北港作為輔助。
+                    </tspan>
+                    <tspan x="0" dy="2em">
+                        雖然兩港最初的定位是相輔相成，但臺北港的崛起嚴重影響基隆的海港事業。
+                    </tspan>
+                    <tspan x="0" dy="2em">
+                        當龍頭產業受到限制，基隆市不可避免地寂寥下來，在地的年輕人不得不開始跨縣市的通勤，往返基隆、臺北以尋求更好的發展。
+                    </tspan>
+                </text>
+            </svg>
+        </div>
+    </div>
+    <div id="KLChance" class="sticky-top" style="height:125vh;">
+        <div class="container-fluid" id="Photo2-2-0">
+            <img class="img2-2-0" src="Picture/2-2-0.jpg" alt="貨櫃港照片" style="width:100vw;">
+            <svg id="KLP2-2-0" class="rounded-rectangle" width="40vw" height="41vh" data-speed="2" data-pos="10"
+                style="position: absolute; left: 0vw; top: 10vh; z-index: 140;">
+                <defs>
+                    <pattern id="img2-2-1" width="100%" height="100%">
+                        <image href="Picture/2-2-1.png" width="100%" height="100%" />
+                    </pattern>
+                </defs>
+                <rect x="0" y="0" width="40vw" height="41vh" rx="25" ry="25" fill="url(#img2-2-1)"></rect>
+            </svg>
+            <svg id="KLP2-2-1" class="rounded-rectangle" width="80vw" height="75vh" data-speed="2" data-pos="10"
+                style="position: absolute; left: 5vw; top: 62.5vh; z-index: 140;">
+                <rect width="100%" height="100%" fill="none" />
+                <text x="0" y="0" font-family="Noto Serif TC" fill="#ffffff" width="90%">
+                    <tspan x="0" dy="2em" font-size="3.5vmin">
+                        市港轉型
+                    </tspan>
+                    <tspan x="0" dy="5em" font-size="2.25vmin">
+                        成也蕭何、敗也蕭何，「距離臺北很近」在產業萎縮下導致青年人口流失，
+                    </tspan>
+                    <tspan x="0" dy="2em" font-size="2.25vmin">
+                        但在國際郵輪風潮中，反而是基隆港的優勢，空下的港邊設施因此迎來新的可能：
+                    </tspan>
+                    <tspan x="0" dy="2em" font-size="2.25vmin">
+                        基隆港的郵輪艘次年年增長，不僅在疫情前成為全臺當之無愧的郵輪母港，更在2018年帶來高達94萬的旅次，
+                    </tspan>
+                    <tspan x="0" dy="2em" font-size="2.25vmin">
+                        只要將赴臺北觀光的旅客留在基隆，就能累積相當可觀的觀光效益。
+                    </tspan>
+                    <tspan x="0" dy="5em" font-size="2.25vmin">
+                        為此，市政府和基隆港務局（今臺灣港務公司基隆港務分公司）展開合作，思考有別以往的市港關係，使得願景和改造有機會從圖紙變成現實。
+                    </tspan>
+                    <tspan x="0" dy="2em" font-size="2.25vmin">
+                        因為各方牽制，也有諸多計畫窒礙難行，面對建設開發的停滯，市政府選擇雙管齊下，同時扮演凝聚市民想像的橋樑：
+                    </tspan>
+                    <tspan x="0" dy="3em" font-size="3.5vmin">
+                        「排除產權、法規限制，基隆可以先做什麼？」
+                    </tspan>
+                </text>
+            </svg>
+        </div>
+    </div>
+    <div id="KLTalk" class="sticky-top"
+        style="position: sticky;top: 250vh;background-color: #314857;font-family:'Noto Serif TC';height: 100vh;">
+        <div class="rounded-corner" id="KLText">
+            <span style="font-size:3.5vmin;color:white">由下而上</span>
+            <span
+                style="font-size:2.25vmin;color:white;"><br><br>引導跟著基隆港歷經大起大落的居民發聲並不容易，一方面是居民不相信提出的想法有機會落實，另一方面沒落的社區也缺乏有意願進駐、有能力執行計畫的團隊。萬事起頭難，隨著工作坊和在地活動順利舉辦，大家記憶中的故事和對未來的想望開始流露出來。<br><br></span>
+            <span class="highlight" style="font-size:2.25vmin;color:#424242;">「基隆的亮點是什麼？」</span>
+            <span
+                style="font-size:2.25vmin;color:white;"><br><br>許多在地人認為，是被埋沒在「雨都」稱號之下，繁極一時的港都歷史，那些因海而生的文化、節慶與信仰，是基隆不為人知的底蘊。<br><br></span>
+            <span class="highlight" style="font-size:2.25vmin;color:#424242;">「怎麼傳達基隆的情懷？」</span>
+            <span
+                style="font-size:2.25vmin;color:white;"><br><br>從環境層面來說，依水而生的城市應該有乾淨的河流和海口；從歷史角度而言，基隆始於崁仔頂街肆，築港時期建造旭川運河，港務最繁重時，三連棟取代旭川河，矗立在市區中央、臨港的絕佳位置，而今則略顯冷清、衰敗。<br><br></span>
+
+            <div class="row">
+                <div class="col-4">
+                    <img class="img2-3" src="Picture/2-3.JPG" alt="駁坎"
+                        style="width:100%;height: 30vh;object-fit: cover;">
+                </div>
+                <div class="col-4">
+
+                </div>
+            </div>
+            <span class="highlight" style="font-size:2.25vmin;color:#424242;">「比起住商大樓，或許基隆更需要能夠展現海港歷史的場域？」</span>
+            <span
+                style="font-size:2.25vmin;color:white;"><br><br>後工業化時代，都市河流功能由運輸轉變為遊憩的規劃方式蔚為風潮，乘著這個思維，許多人想起那條湮滅於記憶裡的旭川河。比起逐漸失去人潮與生機的老舊建築，讓旅客下船後第一時間看到以河川為主軸的開放空間，似乎更具吸引力。<br><br>2021年底，三連棟旁的忠二橋、忠三橋主樑變形，改建開挖時發現疑似日治時期的駁坎，再次讓大家思考保留古駁坎、再現旭川河的可行性。</span>
+        </div>
+    </div>
+    <div class="sticky-top card-group"
+        style="padding-left: 10vw;padding-right: 10vw;padding-top: 10vw;padding-bottom: 10vw;">
+        <div class="card">
+            <img src="Picture/2-4-1.png" class="card-img-top" alt="留言說" style="padding: 25%;">
+            <div class="card-body" style="background-color: #314857;">
+                <p class="card-title" style="font-family:'Noto Serif TC';font-size:2.5vmin;color:white;">
+                    「拜託不要放棄旭川河，<br>好想在有生之年看到旭川河開蓋」</p>
+            </div>
+            <div class="card-body" style="background-color: #314857;">
+                <p class="card-text" style="font-family:'Noto Serif TC';font-size:1.8vmin;color:white;">
+                    <br>來自「基隆市港再生標竿願景3D影片」底下的留言</p>
+            </div>
+        </div>
+        <div class="card">
+            <img src="Picture/2-4-2.png" class="card-img-top" alt="規劃說" style="padding: 25%;">
+            <div class="card-body" style="background-color: #314857;">
+                <p class="card-title" style="font-family:'Noto Serif TC';font-size:2.5vmin;color:white;">
+                    李孟薇｜城市糶手呼吸伸展所<br>王之妍｜明日基隆，大船出港＿再造公共旭川<br>廖宗勳｜雨日慶典</p>
+            </div>
+            <div class="card-body" style="background-color: #314857;">
+                <p class="card-text" style="font-family:'Noto Serif TC';font-size:1.8vmin;color:white;">
+                    「第二屆基隆評圖：靠岸KEELUNG」參賽作品</p>
+            </div>
+        </div>
+        <div class="card">
+            <img src="Picture/2-4-3.png" class="card-img-top" alt="居民說" style="padding: 25%;">
+            <div class="card-body" style="background-color: #314857;">
+                <p class="card-title" style="font-family:'Noto Serif TC';font-size:2.5vmin;color:white;">
+                    「如果它蓋在這邊（火車站西岸碼頭廣場），要跟我們換的話，我們很樂意啦，我們整棟大樓的話，只有我代表就可以了。」</p>
+            </div>
+            <div class="card-body" style="background-color: #314857;">
+                <p class="card-text" style="font-family:'Noto Serif TC';font-size:1.8vmin;color:white;">公視獨立特派員第233集─看不見的河　仁德里里長王朝成
+                </p>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(function () {
+            var winh = $(window).height();
+            var outer_pos = $("#OldPhoto1-4").offset().top;
+            var outer_end = outer_pos + $("#OldPhoto1-4").height();
+
+            $(window).scroll(function () {
+                var scrolled = $(document).scrollTop();
+                var opacity = 1 - (scrolled - outer_pos) / winh;
+                opacity = Math.max(0, Math.min(1, opacity));
+
+                $(".img1-4").css("opacity", opacity);
+                $("#FishMarketText").css("opacity", opacity);
+
+                if (opacity >= 1) {
+                    $("#OldPhoto1-4").addClass("hidden");
+                } else {
+                    $("#OldPhoto1-4").removeClass("hidden");
+                }
+            });
+        });
+    </script>
+    <script>
+        $(function () {
+            var winh = $(window).height();
+            var outer_pos = $("#OldPhoto1-5").offset().top;
+            var outer_end = outer_pos + $("#OldPhoto1-5").height();
+
+            $(window).scroll(function () {
+                var scrolled = $(document).scrollTop();
+                var opacity = 1 - (scrolled - outer_pos) / winh;
+                opacity = Math.max(0, Math.min(1, opacity));
+
+                $(".img1-5").css("opacity", opacity);
+                $("#BuildingsText").css("opacity", opacity);
+
+                if (opacity >= 1) {
+                    $("#OldPhoto1-5").addClass("hidden");
+                } else {
+                    $("#OldPhoto1-5").removeClass("hidden");
+                }
+            });
+        });
+    </script>
+    <script>
+        $(function () {
+            var winh = $(window).height();
+            var outer_pos = $("#OldPhoto1-7").offset().top;
+            var outer_end = outer_pos + $("#OldPhoto1-7").height();
+
+            $(window).scroll(function () {
+                var scrolled = $(document).scrollTop();
+                var opacity = 1 - (scrolled - outer_pos) / winh;
+                opacity = Math.max(0, Math.min(1, opacity));
+
+                $(".img1-7").css("opacity", opacity);
+                $("#ShopText").css("opacity", opacity);
+
+                if (opacity >= 1) {
+                    $("#OldPhoto1-7").addClass("hidden");
+                } else {
+                    $("#OldPhoto1-7").removeClass("hidden");
+                }
+            });
+        });
+    </script>
+    <script>
+        $(function () {
+            var winh = $(window).height();
+            var outer_pos = $("#OldPhoto1-7").offset().top;
+            var outer_end = outer_pos + $("#OldPhoto1-7").height();
+
+            $(window).scroll(function () {
+                var scrolled = $(document).scrollTop();
+                var opacity = 1 - (scrolled - outer_pos) / winh;
+                opacity = Math.max(0, Math.min(1, opacity));
+
+                $(".img1-7").css("opacity", opacity);
+                $("#ShopText").css("opacity", opacity);
+
+                if (opacity >= 1) {
+                    $("#OldPhoto1-7").addClass("hidden");
+                } else {
+                    $("#OldPhoto1-7").removeClass("hidden");
+                }
+            });
+        });
+    </script>
+    <script>
+        $(function () {
+            var winh = $(window).height();
+            var outer_pos = $("#Photo1-8").offset().top;
+            var outer_end = outer_pos + $("#Photo1-8").height();
+
+            $(window).scroll(function () {
+                var scrolled = $(document).scrollTop();
+                var opacity = 1 - (scrolled - outer_pos) / winh;
+                opacity = Math.max(0, Math.min(1, opacity));
+
+                $(".img1-8").css("opacity", opacity);
+                $("#ShopinBuildingsText").css("opacity", opacity);
+
+                if (opacity >= 1) {
+                    $("#Photo1-8").addClass("hidden");
+                } else {
+                    $("#Photo1-8").removeClass("hidden");
+                }
+            });
+        });
+    </script>
+    <script>
+        window.addEventListener('scroll', () => {
+            // 檢查是否已經滑動完上面的 sticky-top
+            const scrolledHeight = window.scrollY;
+            const upperStickyTopHeight = upperStickyTop.clientHeight;
+            const upperStickyTopBottom = upperStickyTop.clientHeight + upperStickyTopHeight;
+
+            // 如果已經滑動超過 upperStickyTop 的底部，則上移下面的 sticky-top
+            if (scrolledHeight > upperStickyTopBottom) {
+                lowerStickyTop.classList.add('show');
+            } else {
+                // 否則恢復下面的 sticky-top 的位置
+                lowerStickyTop.classList.remove('show');
+            }
+        });
+    </script>
+</body>
+
+</html>
